@@ -62,12 +62,12 @@ fi
 mkdir -p /app
  VALIDATE $? "creating app dir"
 
- curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+ curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip  &>>LOG_FILE
  VALIDATE $? "downloading backend code"
 
 cd /app
-VALIDATE $? "creating app dir"
+rm -rf /app/*
 
 
-unzip /tmp/backend.zip
+unzip /tmp/backend.zip &>>LOG_FILE
 VALIDATE $? "extracting backend code"
