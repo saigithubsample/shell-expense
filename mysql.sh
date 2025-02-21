@@ -44,5 +44,11 @@ VALIDATE $? "enabling mysql"
 systemctl start mysqld  | tee -a $LOG_FILE
 VALIDATE $? "Starting mysql"
 
-mysql_secure_installation --set-root-pass ExpenseApp@1  | tee -a $LOG_FILE
-VALIDATE $? "setting root password for expense user"
+mysql -h mysql.geethika.shop -u root -pExpenseApp@1 -e 'show databases;' | tee -a $LOG_FILE
+if [ $? -ne 0]
+then 
+ echo " root password ha not setup, setting now"
+ mysql_secure_installation --set-root-pass ExpenseApp@1  | tee -a $LOG_FILE
+ VALIDATE $? "setting root password for expense user"
+else
+ echo -e " $G Root password is already setup"
