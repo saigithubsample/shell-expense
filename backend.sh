@@ -33,7 +33,7 @@ VALIDATE(){
 }
 
 
-echo " script started executing at : $(date)"  | tee -a $LOG_FILE
+echo -e " $Y script started executing at : $(date)"  | tee -a $LOG_FILE
 
 CHECK_ROOT
 
@@ -47,5 +47,12 @@ VALIDATE $? "enabling nodejs:20"
 dnf install nodejs -y &>>LOG_FILE
 VALIDATE $? "installing nodejs"
 
-useradd expense &>>LOG_FILE
-VALIDATE $? "creating user expense"
+id expense  &>>LOG_FILE
+if [ $? -nr 0 ]
+then
+    echo -e "$R expense user not exits.. creating"
+    useradd expense &>>LOG_FILE
+    VALIDATE $? "creating user expense"
+else 
+    echo -e "$G user is already created  .. skipping"'
+fi    
