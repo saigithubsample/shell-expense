@@ -10,4 +10,6 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-FILES=$(find /home/ec2-user/log/ -name "*.log" -mtime +14)
+FILES=$(find $Source_Direct -name "*.log" -mtime +14)
+
+ echo "list of files: $FILES"
