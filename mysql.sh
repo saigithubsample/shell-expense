@@ -45,7 +45,7 @@ systemctl start mysqld  | tee -a $LOG_FILE
 VALIDATE $? "Starting mysql"
 
 mysql -h mysql.geethika.shop -u root -pExpenseApp@1 -e 'show databases;' | tee -a $LOG_FILE
-if [ $? -ne 0]
+if [ $? -ne 0 ]
 then 
     echo " root password has not setup, setting now" | tee -a $LOG_FILE
     mysql_secure_installation --set-root-pass ExpenseApp@1  
