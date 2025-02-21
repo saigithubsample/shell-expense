@@ -51,11 +51,10 @@ VALIDATE $? "Starting nginx"
 rm -rf /usr/share/nginx/html/*  
 VALIDATE $? "removing html page"
 
-curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip4 &>>LOG_FILE
+curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip &>>LOG_FILE
 VALIDATE $? "downloading frontend"
 
-cd /usr/share/nginx/html &>>LOG_FILE
-
+cd /usr/share/nginx/html 
 
 unzip /tmp/frontend.zip &>>LOG_FILE
 VALIDATE $? "Extracting the front end"
