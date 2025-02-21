@@ -77,11 +77,11 @@ cp /home/ec2-user/shell-expense/backend.service /etc/systemd/system/backend.serv
 dnf install mysql -y &>>LOG_FILE
 VALIDATE $? "installing mysql"
 
-mysql -h <MYSQL-SERVER-IPADDRESS> -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>LOG_FILE
+mysql -h mysql.geethika.shop -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>LOG_FILE
 VALIDATE $? "loading schema"
 
 systemctl daemon-reload &>>LOG_FILE
-VALIDATE $? "ldemoan reload"
+VALIDATE $? "demoan reload"
 
 systemctl enable backend   &>>LOG_FILE
 VALIDATE $? "enabling backend"
