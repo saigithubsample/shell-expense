@@ -52,3 +52,4 @@ then
  VALIDATE $? "setting root password for expense user"
 else
  echo -e " $G Root password is already setup"
+fi
