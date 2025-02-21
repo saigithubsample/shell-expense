@@ -71,7 +71,7 @@ rm -rf /app/*
 unzip /tmp/backend.zip &>>LOG_FILE
 VALIDATE $? "extracting backend code"
 
-npm install
+npm install &>>LOG_FILE
 cp /home/ec2-user/shell-expense/backend.service /etc/systemd/system/backend.service
 
 dnf install mysql -y &>>LOG_FILE
