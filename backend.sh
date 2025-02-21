@@ -56,4 +56,18 @@ then
     VALIDATE $? "creating user expense"
 else 
     echo -e "$G user is already created  .. skipping"
+
 fi    
+
+mkdir -p /app
+ VALIDATE $? "creating app dir"
+
+ curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+ VALIDATE $? "downloading backend code"
+
+cd /app
+VALIDATE $? "creating app dir"
+
+
+unzip /tmp/backend.zip
+VALIDATE $? "extracting backend code"
