@@ -80,14 +80,3 @@ VALIDATE $? "installing mysql"
 mysql -h mysql.geethika.shop -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>LOG_FILE
 VALIDATE $? "loading schema"
 
-systemctl daemon-reload &>>LOG_FILE
-VALIDATE $? "demoan reload"
-
-systemctl enable backend   &>>LOG_FILE
-VALIDATE $? "enabling backend"
-
-systemctl start backend  &>>LOG_FILE
-VALIDATE $? "starting backend"
-
-systemctl restart backend  &>>LOG_FILE
-VALIDATE $? "restrating backend"
