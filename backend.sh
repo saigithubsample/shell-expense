@@ -55,5 +55,5 @@ then
     useradd expense &>>LOG_FILE
     VALIDATE $? "creating user expense"
 else 
-    echo -e "$G user is already created  .. skipping"'
+    echo -e "$G user is already created  .. skipping"
 fi    
