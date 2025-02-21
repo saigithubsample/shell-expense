@@ -47,9 +47,9 @@ VALIDATE $? "Starting mysql"
 mysql -h mysql.geethika.shop -u root -pExpenseApp@1 -e 'show databases;' | tee -a $LOG_FILE
 if [ $? -ne 0]
 then 
- echo " root password ha not setup, setting now"
- mysql_secure_installation --set-root-pass ExpenseApp@1  | tee -a $LOG_FILE
- VALIDATE $? "setting root password for expense user"
+    echo " root password has not setup, setting now" | tee -a $LOG_FILE
+    mysql_secure_installation --set-root-pass ExpenseApp@1  
+    VALIDATE $? "setting root password for expense user"
 else
- echo -e " $G Root password is already setup"
+    echo -e " $G Root password is already setup" | tee -a $LOG_FILE
 fi
