@@ -68,6 +68,26 @@ mkdir -p /app
 cd /app
 rm -rf /app/*
 
-
 unzip /tmp/backend.zip &>>LOG_FILE
 VALIDATE $? "extracting backend code"
+
+npm install
+cp /home/ec2-user/shell-expense/backend.service /etc/systemd/system/backend.service
+
+dnf install mysql -y &>>LOG_FILE
+VALIDATE $? "installing mysql"
+
+mysql -h <MYSQL-SERVER-IPADDRESS> -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>LOG_FILE
+VALIDATE $? "loading schema"
+
+systemctl daemon-reload &>>LOG_FILE
+VALIDATE $? "ldemoan reload"
+
+systemctl enable backend   &>>LOG_FILE
+VALIDATE $? "enabling backend"
+
+systemctl start backend  &>>LOG_FILE
+VALIDATE $? "starting backend"
+
+systemctl restart backend  &>>LOG_FILE
+VALIDATE $? "restrating backend"
