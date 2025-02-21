@@ -15,3 +15,8 @@ fi
 FILES=$(find $Source_Direct -name "*.log" -mtime +14)
 
  echo "list of files: $FILES"
+
+ while IFS= read -r
+ do
+ echo "Deleting line: $line"
+ done <<< $FILES
