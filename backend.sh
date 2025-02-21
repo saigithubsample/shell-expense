@@ -48,4 +48,4 @@ dnf install nodejs -y
 VALIDATE $? "installing nodejs"
 
 useradd expense
-VALIDATE $? "installing nodejs"
+VALIDATE $? "creating user expense"
