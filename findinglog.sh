@@ -16,7 +16,7 @@ FILES=$(find $Source_Direct -name "*.log" -mtime +14)
 
  echo "list of files: $FILES"
 
- while IFS=read -r line
+ while IFS= read -r line
  do
    echo "Deleting line: $line"
    rm -rf $line
